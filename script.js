@@ -1,23 +1,30 @@
 const imgcard = document.querySelectorAll(".img");
-const images = ["url(/cat.jpg)", "url(/lion.jpg)", "url(/ele.jpg)"];
+const images = [
+  { imagepath: "url(/cat.jpg)", class: "cat", num: 0 },
+  { imagepath: "url(/lion.jpg)", class: "lion", num: 0 },
+  { imagepath: "url(/ele.jpg)", class: "elephant", num: 0 },
+];
 
 for (let i = 0; i < 6; i++) {
-  const randomImg = Math.ceil(Math.random() * 3);
   const randomDiv = imgcard[i];
-  let randomNum = [];
-
-  /////////
-  //////////
-
-  randomDiv.style.backgroundImage = images[randomImg - 1];
+  let randomImageNum;
+  if (images.length === 3) {
+    randomImageNum = Math.floor(Math.random() * 3);
+    if (images[randomImageNum].num === 2) {
+      images.splice([randomImageNum], 1);
+    }
+  }
+  if (images.length === 2) {
+    randomImageNum = Math.floor(Math.random() * 2);
+    if (images[randomImageNum].num === 2) {
+      images.splice([randomImageNum], 1);
+    }
+  }
+  if (images.length === 1) {
+    randomImageNum = Math.floor(Math.random() * 1);
+  }
+  randomDiv.style.backgroundImage = images[randomImageNum].imagepath;
+  images[randomImageNum].num++;
   randomDiv.style.backgroundColor = "#fff";
-  if (randomImg === 1) {
-    randomDiv.classList.add("cat");
-  }
-  if (randomImg === 2) {
-    randomDiv.classList.add("lion");
-  }
-  if (randomImg === 3) {
-    randomDiv.classList.add("elephant");
-  }
+  randomDiv.classList.add(images[randomImageNum].class);
 }
