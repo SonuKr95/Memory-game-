@@ -24,7 +24,14 @@ for (let i = 0; i < 6; i++) {
     randomImageNum = Math.floor(Math.random() * 1);
   }
   randomDiv.style.backgroundImage = images[randomImageNum].imagepath;
+
   images[randomImageNum].num++;
-  randomDiv.style.backgroundColor = "#fff";
+
   randomDiv.classList.add(images[randomImageNum].class);
 }
+
+imgcard.forEach((imgContainer) => {
+  imgContainer.addEventListener("click", () => {
+    console.log(imgContainer.classList.contains("cat"));
+  });
+});
