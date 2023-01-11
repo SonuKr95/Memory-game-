@@ -1,14 +1,15 @@
 const imgcard = document.querySelectorAll(".img");
 const mainCont = document.querySelector(".main-container");
 const images = [
-  { imagepath: "url(/cat.jpg)", class: "cat", num: 0 },
-  { imagepath: "url(/lion.jpg)", class: "lion", num: 0 },
-  { imagepath: "url(/ele.jpg)", class: "elephant", num: 0 },
+  { imagepath: "url(cat.jpg)", class: "cat", num: 0 },
+  { imagepath: "url(lion.jpg)", class: "lion", num: 0 },
+  { imagepath: "url(ele.jpg)", class: "elephant", num: 0 },
 ];
 let count = [];
 let clicked = 0;
 let imageSelected = [];
-clearInterval();
+
+const btn = document.querySelector(".btn");
 
 for (let i = 0; i < 6; i++) {
   const randomDiv = imgcard[i];
@@ -54,11 +55,11 @@ mainCont.addEventListener("click", (e) => {
         }
         if (clicked === 2 && imageVal !== count[0]) {
           imageSelected.forEach((pic) => {
-            // setInterval(() => {
-            pic.style.backgroundColor = "pink";
-            // }, 300);
-            // clearInterval();
+            setTimeout(() => {
+              pic.style.backgroundColor = "rgb(223, 57, 85)";
+            }, 600);
           });
+
           clicked = 0;
           count = [];
           imageSelected = [];
@@ -69,6 +70,6 @@ mainCont.addEventListener("click", (e) => {
   }
 });
 
-//  imageSelected.forEach((pic) => {
-//    pic.style.backgroundColor = "pink";
-//  });
+btn.addEventListener("click", () => {
+  window.location.reload();
+});
