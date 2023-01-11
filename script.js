@@ -30,8 +30,9 @@ for (let i = 0; i < 6; i++) {
   randomDiv.classList.add(images[randomImageNum].class);
 }
 
-imgcard.forEach((imgContainer) => {
-  imgContainer.addEventListener("click", () => {
-    console.log(imgContainer.classList.contains("cat"));
-  });
-});
+// imgcard.forEach((imgContainer) => {
+//   console.log(imgContainer.classList);
+//   imgContainer.addEventListener("click", (e) => {
+//     console.log(e.composedPath());
+//   });
+// });

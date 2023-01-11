@@ -40,8 +40,14 @@ img {
 .img {
   border: 1px solid red;
   height: 185px;
-  width: 30%;
+  width: 150px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  position: relative;
+  z-index: -1;
+}
+
+.overlay {
+  /* background-color: rgb(127, 142, 255); */
 }
