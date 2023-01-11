@@ -6,6 +6,9 @@ const images = [
   { imagepath: "url(/ele.jpg)", class: "elephant", num: 0 },
 ];
 let count = [];
+let clicked = 0;
+let imageSelected = [];
+clearInterval();
 
 for (let i = 0; i < 6; i++) {
   const randomDiv = imgcard[i];
@@ -37,11 +40,35 @@ mainCont.addEventListener("click", (e) => {
     e.composedPath().forEach((item) => {
       if (item.classList != "overlay") {
       } else {
-        item.classList.toggle("overlay");
-        let imageSelected = item.querySelector("div").classList[2];
-        count.push(imageSelected);
-        console.log(count);
+        item.style.backgroundColor = "transparent";
+        imageSelected.push(item);
+        let imageVal = item.querySelector("div").classList[2];
+        count.push(imageVal);
+        clicked++;
+
+        if (clicked === 2 && imageVal === count[0]) {
+          count = [];
+          imageSelected = [];
+          imageVal = [];
+          clicked = 0;
+        }
+        if (clicked === 2 && imageVal !== count[0]) {
+          imageSelected.forEach((pic) => {
+            // setInterval(() => {
+            pic.style.backgroundColor = "pink";
+            // }, 300);
+            // clearInterval();
+          });
+          clicked = 0;
+          count = [];
+          imageSelected = [];
+          imageVal = [];
+        }
       }
     });
   }
 });
+
+//  imageSelected.forEach((pic) => {
+//    pic.style.backgroundColor = "pink";
+//  });
