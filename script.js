@@ -1,9 +1,11 @@
 const imgcard = document.querySelectorAll(".img");
+const mainCont = document.querySelector(".main-container");
 const images = [
   { imagepath: "url(/cat.jpg)", class: "cat", num: 0 },
   { imagepath: "url(/lion.jpg)", class: "lion", num: 0 },
   { imagepath: "url(/ele.jpg)", class: "elephant", num: 0 },
 ];
+let count = [];
 
 for (let i = 0; i < 6; i++) {
   const randomDiv = imgcard[i];
@@ -30,9 +32,16 @@ for (let i = 0; i < 6; i++) {
   randomDiv.classList.add(images[randomImageNum].class);
 }
 
-// imgcard.forEach((imgContainer) => {
-//   console.log(imgContainer.classList);
-//   imgContainer.addEventListener("click", (e) => {
-//     console.log(e.composedPath());
-//   });
-// });
+mainCont.addEventListener("click", (e) => {
+  if (e.target.classList.contains("overlay")) {
+    e.composedPath().forEach((item) => {
+      if (item.classList != "overlay") {
+      } else {
+        item.classList.toggle("overlay");
+        let imageSelected = item.querySelector("div").classList[2];
+        count.push(imageSelected);
+        console.log(count);
+      }
+    });
+  }
+});
