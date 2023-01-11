@@ -67,3 +67,12 @@ button {
   background-color: rgb(98, 243, 108);
   border-radius: 10px;
 }
+
+a {
+  text-decoration: none;
+}
+
+.attr {
+  margin-top: 10px;
+  text-align: center;
+}
